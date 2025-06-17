@@ -1,0 +1,22 @@
+<div class="background">
+  <header class="app-header">🧠 AI Doubt Solver</header>
+
+  <div class="card-container" [ngClass]="{ 'dark-mode': isDarkMode }">
+    <button class="theme-toggle" (click)="toggleTheme()">
+      {{ isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+    </button>
+
+    <h2>Upload your question image</h2>
+    <input type="file" (change)="onFileSelected($event)" />
+
+    <div *ngIf="loading" class="loading-text">⏳ Solving your doubt...</div>
+
+    <div *ngIf="result" class="result-block">
+      <h3>Question:</h3>
+      <p>{{ result.question }}</p>
+      <h3>Answer:</h3>
+      <p>{{ result.answer }}</p>
+      <button class="download-btn" (click)="downloadAsPDF()">📄 Download as PDF</button>
+    </div>
+  </div>
+</div>
